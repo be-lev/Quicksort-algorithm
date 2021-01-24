@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quicksort algorithm</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <script src="../p5.min.js"></script>
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+    <h1>My explanation:</h1>
+   
+    <h3>the Quicksort algorithm is on average O(n*log(n)), N log N algorithm.</h3>
+   <p>
+    Basically Quicksort is divide and conquer approach that requires recursion.
+    
+    we start with an array of random values
+    
+    using on recursive function called "Quicksort".
+    quickSort is expecting to pass in an array, start index and end index => function quickSort(arr, start,end)
+    the main thing is that start has to be before end.
+    The array is going to recursively get subdivided and subdivided,
+    At some point, the start and end are in the same spot => if(start >= end){return}, at this point the algorithm is done!
+    
+    The idea of the Quicksort is to do a step which is called partition(arr,start,end) and it will return the index of where the pivot ended up,
+    first pick some part of the array that is called a pivot point, in quick sort algorithm it's the end index.
+    Then the idea is to take everything that is less than the pivot value and put it on one side of the array,
+    everything that is greater than the pivot value on the other side of the array.
+</p> 
+<p>
+    simplify version to see it, is: <br>
+    1. start with the array, we pick an arbitrary pivot point,<br>
+    2. put everything on one side or the other,<br>
+    3. figure out where that pivot ended up,<br>
+    4. Quicksort both sides,<br>
+    5. Finish, once there is only one element left witch means start and end are the same. So it'll start 1-4 again or it will return.
+</p>
+
+<p>
+    <h4>little example: Start quickSort(arr,start,end) </h4>
+    arr: 7,2,6,5,4. end index = 4, <br>
+    index = partition(arr,start, end)before
+    arr: 2,4,7,6,5 <br>
+    pivot point index = 1 <br>
+    Left side of pivot point arr = Recursively call quickSort(arr,start,index -1) => ([2,4,5,7,6], 2, 2) ==> start = end ===> return;<br>
+    Right side of pivot point arr = Recursively call quickSort(arr,index +1,end) => ([2,4,5,7,6] , 5 , 6);<br>
+    
+    right side arr = 5,7,6<br>
+    Start quickSort(arr,start,end)<br>
+    arr: 5,7,6.  pivot point = end index = 6,<br>
+    index = partition(arr,start, end)<br>
+    arr = 5,6,7<br>
+    pivot point index = 1<br>
+    Left side of pivot point arr = Recursively call quickSort(arr,start,index -1) => ([5,7,6], 5, 5) ==> start = end ===> return;<br>
+    Right side of pivot point arr = Recursively call quickSort(arr,index +1,end) => ([2,4,5,7,6] , 6 , 7);<br>
+    
+    right side arr = 6,7<br>
+    Start quickSort(arr,start,end)<br>
+    arr: 6,7.  pivot point = end index = 7,<br>
+    index = partition(arr,start, end)<br>
+    arr = 6,7<br>
+    pivot point index = 0<br>
+    Recursively call quickSort(arr,start,index -1) => ([6,7], 6, 6) ==> start = end ===> return; END<br>
+</p> 
+</body>
+
+</html>
